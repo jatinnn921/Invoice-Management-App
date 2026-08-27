@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Invoice Management"
+description = "A responsive invoice workspace for freelancers and small teams to track invoices, create polished documents, and manage clients with fast, simple workflows."
+version = "1.0.0"
+id = "artifacts/invoice-management"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19744
+
+[services.development]
+run = "pnpm --filter @workspace/invoice-management run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/invoice-management", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/invoice-management/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19744"
+BASE_PATH = "/"

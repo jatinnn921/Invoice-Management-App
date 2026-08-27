@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 39 33% 95%;
+  --foreground: 225 31% 16%;
+  --border: 39 19% 86%;
+  --input: 39 19% 82%;
+  --ring: 10 78% 61%;
+  --card: 42 35% 98%;
+  --card-foreground: 225 31% 16%;
+  --card-border: 39 22% 88%;
+  --primary: 225 31% 16%;
+  --primary-foreground: 40 38% 96%;
+  --secondary: 171 31% 89%;
+  --secondary-foreground: 174 48% 24%;
+  --muted: 39 25% 91%;
+  --muted-foreground: 221 12% 46%;
+  --accent: 10 78% 61%;
+  --accent-foreground: 12 43% 14%;
+  --destructive: 4 66% 48%;
+  --destructive-foreground: 40 38% 96%;
+  --sidebar: 225 31% 16%;
+  --sidebar-foreground: 41 37% 92%;
+  --sidebar-border: 225 22% 25%;
+  --sidebar-primary: 10 78% 61%;
+  --sidebar-primary-foreground: 12 43% 14%;
+  --sidebar-accent: 225 24% 22%;
+  --sidebar-accent-foreground: 41 37% 96%;
+  --app-font-sans: 'DM Sans', ui-sans-serif, sans-serif;
+  --app-font-serif: 'Fraunces', Georgia, serif;
+  --app-font-mono: 'DM Mono', ui-monospace, monospace;
+  --radius: 0.8rem;
+}
+
+.dark {
+  --background: 225 29% 11%;
+  --foreground: 41 37% 92%;
+  --border: 225 20% 24%;
+  --input: 225 20% 28%;
+  --card: 225 25% 15%;
+  --card-foreground: 41 37% 92%;
+  --card-border: 225 20% 25%;
+  --primary: 41 37% 92%;
+  --primary-foreground: 225 31% 16%;
+  --secondary: 174 26% 24%;
+  --secondary-foreground: 174 41% 82%;
+  --muted: 225 21% 20%;
+  --muted-foreground: 220 12% 68%;
+  --accent: 10 78% 61%;
+  --accent-foreground: 12 43% 14%;
+  --destructive: 4 66% 55%;
+  --destructive-foreground: 225 31% 16%;
+  --sidebar: 225 34% 9%;
+  --sidebar-foreground: 41 37% 92%;
+  --sidebar-border: 225 20% 20%;
+  --sidebar-primary: 10 78% 61%;
+  --sidebar-primary-foreground: 12 43% 14%;
+  --sidebar-accent: 225 23% 16%;
+  --sidebar-accent-foreground: 41 37% 96%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-family: var(--app-font-sans); }
+  button, input, select, textarea { font: inherit; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--app-font-serif); }
+  .font-data { font-family: var(--app-font-mono); }
+  .paper-shadow { box-shadow: 0 12px 32px rgba(39, 41, 58, .08), 0 2px 5px rgba(39, 41, 58, .04); }
+  .soft-shadow { box-shadow: 0 7px 22px rgba(39, 41, 58, .06); }
+  .ring-focus:focus { outline: 3px solid hsl(var(--accent) / .25); outline-offset: 2px; }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-rise { animation: rise-in .42s ease-out both; }
+.stagger-1 { animation-delay: 60ms; }
+.stagger-2 { animation-delay: 110ms; }
+.stagger-3 { animation-delay: 160ms; }
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .invoice-paper { box-shadow: none !important; border: 0 !important; }
+}
+.print-only { display: none; }
