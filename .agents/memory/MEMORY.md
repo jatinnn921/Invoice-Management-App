@@ -1,0 +1,1 @@
+- [Prisma migrations](prisma-migrations.md) — in this pnpm workspace, invoke Prisma migrations with package-scoped `exec` when passing migration flags.
