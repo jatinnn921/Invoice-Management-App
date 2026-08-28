@@ -119,7 +119,7 @@ function includeInvoiceRelations() {
   };
 }
 
-async function markPendingInvoicesOverdue(client = prisma) {
+export async function markPendingInvoicesOverdue(client = prisma) {
   await client.invoice.updateMany({
     where: {
       status: "PENDING",
